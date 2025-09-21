@@ -1,0 +1,61 @@
+﻿@page
+@model ZelisTrainingRazorWebApp.Pages.Technologies.IndexModel
+@{
+}
+
+<h2>Technology List</h2>
+
+<a class="btn btn-primary" asp-area="" asp-page="/Technologies/Create">Create Technology</a>
+<br/>
+<br />
+<br />
+<br />
+<!-- Filter Form -->
+<form method="get" class="mb-3">
+    <div class="d-flex align-items-center">
+        <label for="Level" class="me-2">Level:</label>
+        <input type="text" name="Level" id="Level" class="form-control me-3"
+               value="@Model.Level" placeholder="e.g., B" style="width: 250px;" />
+        <button type="submit" class="btn btn-secondary">Apply Filter</button>
+    </div>
+</form>
+
+<form method="get" class="mb-3">
+    <div class="d-flex align-items-center">
+        <label for="Duration" class="me-2">Duration:</label>
+        <input type="number" name="Duration" id="Duration" class="form-control me-3"
+               value="@Model.Duration" placeholder="e.g., 15" style="width: 250px;" />
+        <button type="submit" class="btn btn-secondary">Apply Filter</button>
+    </div>
+</form>
+
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Level</th>
+            <th>Duration</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tech in Model.technologies)
+        {
+            <tr>
+                <td>@tech.TechnologyId</td>
+                <td>@tech.TechnologyName</td>
+                <td>@tech.Level</td>
+                <td>@tech.Duration</td>
+                
+                <td>
+                    <a href="/Technologies/Edit/@tech.TechnologyId">Edit</a>
+                    <a href="/Technologies/Details/@tech.TechnologyId">Details</a>
+                    <a href="/Technologies/Delete/@tech.TechnologyId">Delete</a>
+                 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,61 @@
+﻿@page
+@model ZelisTrainingRazorWebApp.Pages.Trainings.IndexModel
+@{
+}
+
+
+<h2>Trainings List</h2>
+
+<a class="btn btn-primary" asp-area="" asp-page="/Trainings/Create">Create Training</a>
+<br/>
+<br />
+<br />
+<!-- Filter by Technology ID -->
+<form method="get" class="mb-3">
+    <div class="d-flex align-items-center">
+        <label for="TechnologyId" class="me-2">Technology ID:</label>
+        <input type="number" name="TechnologyId" id="TechnologyId" class="form-control me-3"
+               placeholder="e.g.,101 to 200" style="width: 250px;" value="@Model.TechnologyId" />
+        <button type="submit" class="btn btn-secondary">Apply Filter</button>
+    </div>
+</form>
+<!-- Filter by Trainer ID -->
+<form method="get" class="mb-3">
+    <div class="d-flex align-items-center">
+        <label for="TrainerId" class="me-2">Trainer ID:</label>
+        <input type="number" name="TrainerId" id="TrainerId" class="form-control me-3"
+               placeholder="e.g.,201 to 300" style="width: 250px;" value="@Model.TrainerId" />
+        <button type="submit" class="btn btn-secondary">Apply Filter</button>
+    </div>
+</form>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Training Id</th>
+            <th>Trainer Id</th>
+            <th>Technology Id</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var training in Model.trainings)
+        {
+            <tr>
+                <td>@training.TrainingId</td>
+                <td>@training.TrainerId</td>
+                <td>@training.TechnologyId</td>
+                <td>@training.StartDate</td>
+                <td>@training.EndDate</td>
+                <td>
+                    <a href="/Trainings/Edit/@training.TrainingId">Edit</a>
+                    <a href="/Trainings/Details/@training.TrainingId">Details</a>
+                    <a href="/Trainings/Delete/@training.TrainingId">Delete</a>
+                 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

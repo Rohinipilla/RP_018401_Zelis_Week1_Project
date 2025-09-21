@@ -1,0 +1,23 @@
+﻿@page "{eid}"
+@model ZelisTrainingRazorWebApp.Pages.Employees.DetailsModel
+@{
+}
+
+<h2>Employee Details</h2>
+
+<label asp-for="Employee.EmpId">Employee Id: </label>
+@Model.Employee.EmpId
+<br/>
+<label asp-for="Employee.EmpName">Employee Name: </label>
+@Model.Employee.EmpName
+<br/>
+<label asp-for="Employee.Designation">Employee Designation: </label>
+@Model.Employee.Designation
+<br/>
+<label asp-for="Employee.Email">Employee Email: </label>
+@Model.Employee.Email
+<br />
+<label asp-for="Employee.Phone">Employee Phone: </label>
+@Model.Employee.Phone
+<br />
+<a href="/Employees/Index">Back To List</a>

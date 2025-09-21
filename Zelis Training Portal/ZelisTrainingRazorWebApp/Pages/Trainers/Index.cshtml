@@ -1,0 +1,53 @@
+﻿@page
+@model ZelisTrainingRazorWebApp.Pages.Trainers.IndexModel
+@{
+}
+
+
+<h2>Trainers List</h2>
+
+<a class="btn btn-primary" asp-area="" asp-page="/Trainers/Create">Create Trainer</a>
+<br/>
+<br />
+<br />
+<!-- Filter by Type -->
+<form method="get" class="mb-3">
+    <div class="d-flex align-items-center">
+        <label for="Type" class="me-2">Trainer Type:</label>
+        <input type="text" name="Type" id="Type" class="form-control me-3"
+               value="@Model.Type" placeholder="e.g.,I-internal,E-external" style="width: 250px;" />
+        <button type="submit" class="btn btn-secondary">Apply Filter</button>
+    </div>
+</form>
+
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Training ID</th>
+            <th>Trainer Name</th>
+            <th>Type</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trainer in Model.trainers)
+        {
+            <tr>
+                <td>@trainer.TrainerId</td>
+                <td>@trainer.TrainerName</td>
+                <td>@trainer.Type</td>
+                <td>@trainer.Email</td>
+                <td>@trainer.Phone</td>
+                <td>
+                    <a href="/Trainers/Edit/@trainer.TrainerId">Edit</a>
+                    <a href="/Trainers/Details/@trainer.TrainerId">Details</a>
+                    <a href="/Trainers/Delete/@trainer.TrainerId">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

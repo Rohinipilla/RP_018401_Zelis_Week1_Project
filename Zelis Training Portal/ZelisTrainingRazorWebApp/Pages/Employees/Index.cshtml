@@ -1,0 +1,56 @@
+﻿@page
+@model ZelisTrainingRazorWebApp.Pages.Employees.IndexModel
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h2>Employee List</h2>
+
+@* <a class="nav-link text-dark" asp-area="" asp-page="/Employees/Create">Create Employee</a> *@
+<a class="btn btn-primary" asp-area="" asp-page="/Employees/Create">Create Employee</a>
+<br />
+<br/>
+<br />
+
+
+<!-- Designation Filter Form (Text Input) -->
+<form method="get" class="form-inline mb-4">
+    <div class="form-group d-flex align-items-center">
+        <label for="designation" class="me-2 mb-0">Enter Designation:</label>
+        <input type="text" name="designation" id="designation" class="form-control me-3"
+               value="@Model.Designation" placeholder="e.g., Software Engineer" style="width: 250px;" />
+        <button type="submit" class="btn btn-secondary">Apply Filter</button>
+    </div>
+</form>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>EmpId</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model.employees)
+        {
+            <tr>
+                <td>@emp.EmpId</td>
+                <td>@emp.EmpName</td>
+                <td>@emp.Designation</td>
+                <td>@emp.Email</td>
+                <td>@emp.Phone</td>
+                <td>
+                    <a href="/Employees/Edit/@emp.EmpId">Edit</a>
+                    <a href="/Employees/Details/@emp.EmpId">Details</a>
+                    <a href="/Employees/Delete/@emp.EmpId">Delete</a>
+                 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,20 @@
+﻿@page "{tid}"
+@model ZelisTrainingRazorWebApp.Pages.Technologies.EditModel
+@{
+}
+
+<form method="post">
+    <label asp-for="Technology.TechnologyId">Technology Id: </label>
+    <input asp-for="Technology.TechnologyId" class="form-control" />
+    <hr />
+    <label asp-for="Technology.TechnologyName">Technology Name: </label>
+    <input asp-for="Technology.TechnologyName" class="form-control" />
+    <hr />
+    <label asp-for="Technology.Level">Technology Level: </label>
+    <input asp-for="Technology.Level" class="form-control" />
+    <hr />
+    <label asp-for="Technology.Duration">Technology Duration: </label>
+    <input asp-for="Technology.Duration" class="form-control" />
+    <hr />
+    <input type="submit" value="Save" />
+</form>
